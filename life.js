@@ -1,14 +1,12 @@
 function lifeCicle(map){
     var i = 0,
         j = 0,
-        //work = [],
         workOut = [],
         mapLen = map.length;
 
     map.forEach(function(val, ind){
         var work = [];
         val.forEach(function(valI, indI, arr){
-
             var z = ind;
             var cur = valI;
             var tmpArr = [];
@@ -43,16 +41,16 @@ function lifeCicle(map){
 
             if (live == 2 || live == 3) {
                 map[ind][indI] = cur;
-            } else if (live < 2 || live > 3) {
-                map[ind][indI] = !cur;
-            } else if (cur == false && live == 3) {
+            }
+            if (live < 2 || live > 3) {
+                map[ind][indI] = false;
+            }
+            if (cur == false && live == 3) {
                 map[ind][indI] = true;
             }
             work.push(map[ind][indI]);
         });
         workOut.push(work);
-        //work = [];
-
     });
 
     return workOut;
