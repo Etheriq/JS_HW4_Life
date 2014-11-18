@@ -8,8 +8,9 @@
 </head>
 <body>
 <div class="container">
-    <h1>Life</h1>
-    <form>
+    <div class="row">
+        <h1>Life</h1>
+        <form>
         <pre class="form-control" id="editor">
 Life = {
     /*
@@ -21,16 +22,19 @@ Life = {
     4. Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
     */
     step: function(map, iteration) {
-        return map;
-    }
+            return lifeCicle(map);
+          }
 };
         </pre>
-        <button id="run" class="btn">Run</button>
-        <button id="stop" class="btn">Stop</button>
-    </form>
-    <div id="output"></div>
+            <button id="run" class="btn">Run</button>
+            <button id="stop" class="btn">Stop</button>
+        </form>
+        <div id="output"></div>
+    </div>
 </div>
+<br>
 <script src="bower_components/ace-builds/src/ace.js"></script>
 <script src="main.js"></script>
+<script src="life.js"></script>
 </body>
 </html>

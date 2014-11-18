@@ -3,12 +3,13 @@
 }
 
 .block {
-    width: 10px;
-    height: 10px;
-    background-color: grey;
+    width: 11px;
+    height: 11px;
+    background-color: #ffffff;
     float: left;
+    border: solid 1px #dcc8b6;
 }
 .block.alive {
-    background-color: black;
+    background-color: #000000;
 }
 
