@@ -8,6 +8,7 @@ function square(randomArr)
     var startCupInd = null,
         finishCupInd = null,
         cupsArr = [],
+        totalSumm = 0,
         squaresArr = [];
 
     randomArr.forEach(function(el, ind, arr){
@@ -34,7 +35,6 @@ function square(randomArr)
     });
 
     startCupInd = null; finishCupInd = null;
-    // [2,5,1,2,3,4,7,7,6,3,5]
     var lastIndInCup = cupsArr[cupsArr.length - 1][1];
     var z = 0,
         summ = 0;
@@ -57,4 +57,10 @@ function square(randomArr)
             }
         }
     }
+
+    squaresArr.forEach(function(el){
+        totalSumm += el;
+        });
+
+    console.log('Total sum: ' + totalSumm);
 }
