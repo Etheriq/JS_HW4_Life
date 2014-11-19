@@ -36,7 +36,7 @@ function lifeCicle(map){
                 }
             }
             tmpArr.forEach(function(el){
-                el ? live++ : dead++
+                el ? live++ : dead++;
             });
 
             if (live == 2 || live == 3) {
