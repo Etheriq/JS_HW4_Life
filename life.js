@@ -7,8 +7,6 @@ function lifeCicle(mapOriginal){
         map.push(subArray.concat());
     });
 
-    var mapLen = map.length;
-
     mapOriginal.forEach(function(val, ind){
         val.forEach(function(valI, indI, arr){
             var cur = valI;
@@ -16,51 +14,80 @@ function lifeCicle(mapOriginal){
             var live = 0,
                 dead = 0;
 
-            if (indI == 0) {
-                tmpArr.push(mapOriginal[ind - 1][indI - 1]);
-            }
-            tmpArr.push(mapOriginal[ind - 1][indI]);
-            if ( indI + 1 <= arr.length) {
-                tmpArr.push(mapOriginal[ind - 1][indI + 1]);
-            }
+            if (ind == 0) {   // first row
+                if (indI != 0 && indI != arr.length - 1) {
+                    tmpArr.push(mapOriginal[mapOriginal.length - 1][indI - 1]);
+                    tmpArr.push(mapOriginal[mapOriginal.length - 1][indI]);
+                    tmpArr.push(mapOriginal[mapOriginal.length - 1][indI + 1]);
 
-            indI - 1 >= 0 ? tmpArr.push(mapOriginal[ind][indI - 1]) : '';
-            indI + 1 <= arr.length + 1 ? tmpArr.push(mapOriginal[ind][indI + 1]): '';
+                    tmpArr.push(mapOriginal[ind][indI - 1]);
+                    tmpArr.push(mapOriginal[ind][indI + 1]);
 
-            if (ind + 1 < mapLen) {
-                if (indI - 1 >= 0) {
                     tmpArr.push(mapOriginal[ind + 1][indI - 1]);
-                }
-                tmpArr.push(mapOriginal[ind + 1][indI]);
-                if ( indI + 1 <= arr.length) {
+                    tmpArr.push(mapOriginal[ind + 1][indI]);
                     tmpArr.push(mapOriginal[ind + 1][indI + 1]);
+                } else {
+                    indI == 0 ? tmpArr.push(mapOriginal[mapOriginal.length - 1][arr.length - 1]) : tmpArr.push(mapOriginal[mapOriginal.length - 1][arr.length - 2]);
+                    indI == 0 ? tmpArr.push(mapOriginal[mapOriginal.length - 1][0]) : tmpArr.push(mapOriginal[mapOriginal.length - 1][arr.length - 1]);
+                    indI == 0 ? tmpArr.push(mapOriginal[mapOriginal.length - 1][1]) : tmpArr.push(mapOriginal[mapOriginal.length - 1][0]);
+
+                    indI == 0 ? tmpArr.push(mapOriginal[ind][arr.length - 1]) : tmpArr.push(mapOriginal[ind][arr.length - 2]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind][1]) : tmpArr.push(mapOriginal[ind][0]);
+
+                    indI == 0 ? tmpArr.push(mapOriginal[ind + 1][arr.length - 1]) : tmpArr.push(mapOriginal[ind + 1][arr.length - 2]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind + 1][0]) : tmpArr.push(mapOriginal[ind + 1][arr.length - 1]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind + 1][1]) : tmpArr.push(mapOriginal[ind + 1][0]);
+                }
+            } else if (ind == mapOriginal.length - 1) {  // last row
+                if (indI != 0 && indI != arr.length - 1) {
+                    tmpArr.push(mapOriginal[ind - 1][indI - 1]);
+                    tmpArr.push(mapOriginal[ind - 1][indI]);
+                    tmpArr.push(mapOriginal[ind - 1][indI + 1]);
+
+                    tmpArr.push(mapOriginal[ind][indI - 1]);
+                    tmpArr.push(mapOriginal[ind][indI + 1]);
+
+                    tmpArr.push(mapOriginal[0][indI - 1]);
+                    tmpArr.push(mapOriginal[0][indI]);
+                    tmpArr.push(mapOriginal[0][indI + 1]);
+                } else {
+                    indI == 0 ? tmpArr.push(mapOriginal[ind - 1][arr.length - 1]) : tmpArr.push(mapOriginal[ind - 1][arr.length - 2]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind - 1][0]) : tmpArr.push(mapOriginal[ind - 1][arr.length - 1]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind - 1][1]) : tmpArr.push(mapOriginal[ind - 1][0]);
+
+                    indI == 0 ? tmpArr.push(mapOriginal[ind][arr.length - 1]) : tmpArr.push(mapOriginal[ind][arr.length - 2]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind][1]) : tmpArr.push(mapOriginal[ind][0]);
+
+                    indI == 0 ? tmpArr.push(mapOriginal[0][arr.length - 1]) : tmpArr.push(mapOriginal[0][arr.length - 2]);
+                    indI == 0 ? tmpArr.push(mapOriginal[0][0]) : tmpArr.push(mapOriginal[0][arr.length - 1]);
+                    indI == 0 ? tmpArr.push(mapOriginal[0][1]) : tmpArr.push(mapOriginal[0][0]);
+                }
+            } else {  // other rows
+                if (indI != 0 && indI != arr.length - 1) {
+                    tmpArr.push(mapOriginal[ind - 1][indI - 1]);
+                    tmpArr.push(mapOriginal[ind - 1][indI]);
+                    tmpArr.push(mapOriginal[ind - 1][indI + 1]);
+
+                    tmpArr.push(mapOriginal[ind][indI - 1]);
+                    tmpArr.push(mapOriginal[ind][indI + 1]);
+
+                    tmpArr.push(mapOriginal[ind + 1][indI - 1]);
+                    tmpArr.push(mapOriginal[ind + 1][indI]);
+                    tmpArr.push(mapOriginal[ind + 1][indI + 1]);
+                } else {
+                    indI == 0 ? tmpArr.push(mapOriginal[ind - 1][arr.length - 1]) : tmpArr.push(mapOriginal[ind - 1][arr.length - 2]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind - 1][0]) : tmpArr.push(mapOriginal[ind - 1][arr.length - 1]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind - 1][1]) : tmpArr.push(mapOriginal[ind - 1][0]);
+
+                    indI == 0 ? tmpArr.push(mapOriginal[ind][arr.length - 1]) : tmpArr.push(mapOriginal[ind][arr.length - 2]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind][1]) : tmpArr.push(mapOriginal[ind][0]);
+
+                    indI == 0 ? tmpArr.push(mapOriginal[ind + 1][arr.length - 1]) : tmpArr.push(mapOriginal[ind + 1][arr.length - 2]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind + 1][0]) : tmpArr.push(mapOriginal[ind + 1][arr.length - 1]);
+                    indI == 0 ? tmpArr.push(mapOriginal[ind + 1][1]) : tmpArr.push(mapOriginal[ind + 1][0]);
                 }
             }
 
-
-
-            //if (ind > 0){
-            //    if (indI - 1 >= 0) {
-            //        tmpArr.push(mapOriginal[ind - 1][indI - 1]);
-            //    }
-            //    tmpArr.push(mapOriginal[ind - 1][indI]);
-            //    if ( indI + 1 <= arr.length) {
-            //        tmpArr.push(mapOriginal[ind - 1][indI + 1]);
-            //    }
-            //}
-            //
-            //indI - 1 >= 0 ? tmpArr.push(mapOriginal[ind][indI - 1]) : '';
-            //indI + 1 <= arr.length + 1 ? tmpArr.push(mapOriginal[ind][indI + 1]): '';
-            //
-            //if (ind + 1 < mapLen) {
-            //    if (indI - 1 >= 0) {
-            //        tmpArr.push(mapOriginal[ind + 1][indI - 1]);
-            //    }
-            //    tmpArr.push(mapOriginal[ind + 1][indI]);
-            //    if ( indI + 1 <= arr.length) {
-            //        tmpArr.push(mapOriginal[ind + 1][indI + 1]);
-            //    }
-            //}
             tmpArr.forEach(function(el){
                 el ? live++ : dead++;
             });

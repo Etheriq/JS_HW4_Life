@@ -9,23 +9,27 @@
     hasAce && editor.getSession().setMode("ace/mode/javascript");
 
     function initMap() {
-        var i, j, size = 50;
+        var i, j, size = 150;
         map = [];
         iteration = 0;
-        for (i = 0; i < size; i++) {
-            map[i] = [];
-            for (j = 0; j < size; j++) {
-                map[i][j] = Math.random() > 0.5;
-            }
-        }
+        //for (i = 0; i < size; i++) {
+        //    map[i] = [];
+        //    for (j = 0; j < size; j++) {
+        //        map[i][j] = Math.random() > 0.75;
+        //    }
+        //}
 
-        //map = [
-        //    [false, false, false, false, false],
-        //    [false, false, false, false, false],
-        //    [false, true,  true,  true,  false],
-        //    [false, false, false, false, false],
-        //    [false, false, false, false, false]
-        //];
+        map = [
+            [false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false],
+            [false, false, true,  false, false ,false, false, true,  false, false ,false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false],
+            [false, false, false, true,  false ,false, false, false, true,  false ,false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false],
+            [false, true,  true,  true,  false ,false, true,  true,  true, false ,false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false],
+            [false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false]
+        ];
+
+        for (var z = 0; z < 20; z++) {
+            map.push([false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false ,false, false, false, false, false]);
+        }
 
         show();
     }
@@ -48,7 +52,7 @@
         step();
         setTimeout(function() {
             running && run();
-        }, 500);
+        }, 200);
     }
 
     function stop() {
