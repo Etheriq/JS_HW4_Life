@@ -18,11 +18,20 @@
                 map[i][j] = Math.random() > 0.5;
             }
         }
+
+        //map = [
+        //    [false, false, false, false, false],
+        //    [false, false, false, false, false],
+        //    [false, true,  true,  true,  false],
+        //    [false, false, false, false, false],
+        //    [false, false, false, false, false]
+        //];
+
         show();
     }
 
     function show() {
-        showDiv.innerHTML = 'Iteration ' + iteration + '\n<br><div>' + map.reduce(function(memo, row) {
+        showDiv.innerHTML = 'Iteration ' + iteration + '\n<br><br><div>' + map.reduce(function(memo, row) {
             return memo + '<div class="row">' + row.map(function(val) {
                 return '<div class="block' + (val ? ' alive' : ' ') + '"></div>';
             }).join('') + '</div>\n';
