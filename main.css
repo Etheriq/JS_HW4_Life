@@ -1,0 +1,15 @@
+#editor {
+    height: 300px;
+}
+
+.block {
+    width: 11px;
+    height: 11px;
+    background-color: #ffffff;
+    float: left;
+    border: solid 1px #dcc8b6;
+}
+.block.alive {
+    background-color: #000000;
+}
+
